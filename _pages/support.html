@@ -499,10 +499,12 @@
     </div>
 
     <script>
-        function copyAddress(elementId, button) {
-            const addressElement = document.getElementById(elementId);
-            const address = addressElement.textContent.trim();
-            
+    function copyAddress(elementId, button) {
+        const addressElement = document.getElementById(elementId);
+        const address = addressElement.textContent.trim();
+        
+        // Try modern clipboard API first
+        if (navigator.clipboard && navigator.clipboard.writeText) {
             navigator.clipboard.writeText(address).then(() => {
                 button.textContent = '✓ Copied!';
                 button.classList.add('copied');
@@ -512,10 +514,44 @@
                     button.classList.remove('copied');
                 }, 2000);
             }).catch(err => {
-                alert('Failed to copy address. Please copy manually.');
-                console.error('Copy failed:', err);
+                fallbackCopy(address, button);
             });
+        } else {
+            fallbackCopy(address, button);
         }
-    </script>
+    }
+
+    function fallbackCopy(text, button) {
+        const textarea = document.createElement('textarea');
+        textarea.value = text;
+        textarea.style.position = 'fixed';
+        textarea.style.top = '0';
+        textarea.style.left = '0';
+        textarea.style.opacity = '0';
+        document.body.appendChild(textarea);
+        
+        textarea.focus();
+        textarea.select();
+        
+        try {
+            const successful = document.execCommand('copy');
+            if (successful) {
+                button.textContent = '✓ Copied!';
+                button.classList.add('copied');
+                
+                setTimeout(() => {
+                    button.textContent = 'Copy Address';
+                    button.classList.remove('copied');
+                }, 2000);
+            } else {
+                alert('Failed to copy. Please copy manually: ' + text);
+            }
+        } catch (err) {
+            alert('Failed to copy. Please copy manually: ' + text);
+        }
+        
+        document.body.removeChild(textarea);
+    }
+</script>
 </body>
 </html>
