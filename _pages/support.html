@@ -1,1 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Is death now the solution?.">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <title>Support This Voice - Silent Screams</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: #000;
+            color: #f5f5f7;
+            overflow-x: hidden;
+            line-height: 1.47059;
+            font-size: 17px;
+            font-weight: 400;
+            letter-spacing: -0.022em;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: saturate(180%) blur(20px);
+            z-index: 1000;
+            border-bottom: 0.5px solid rgba(255, 255, 255, 0.1);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            max-width: 1024px;
+            margin: 0 auto;
+            padding: 0 22px;
+            height: 48px;
+            gap: 32px;
+        }
+
+        nav a {
+            color: #f5f5f7;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 400;
+            letter-spacing: -0.01em;
+            transition: opacity 0.3s;
+            opacity: 0.8;
+        }
+
+        nav a:hover {
+            opacity: 1;
+        }
+
+        .container {
+            max-width: 1024px;
+            margin: 0 auto;
+            padding: 108px 22px 80px;
+        }
+
+        h1 {
+            font-size: clamp(40px, 6vw, 64px);
+            font-weight: 600;
+            letter-spacing: -0.015em;
+            line-height: 1.0625;
+            margin-bottom: 24px;
+            text-align: center;
+            background: linear-gradient(180deg, #f5f5f7 0%, #86868b 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .intro {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 60px;
+            background: rgba(255, 255, 255, 0.04);
+            padding: 40px 32px;
+            border-radius: 18px;
+            border: 0.5px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .intro p {
+            font-size: clamp(17px, 2vw, 19px);
+            line-height: 1.52947;
+            letter-spacing: -0.022em;
+            margin-bottom: 20px;
+            color: #a1a1a6;
+        }
+
+        .impact-section {
+            background: rgba(0, 113, 227, 0.08);
+            padding: 48px;
+            border-radius: 18px;
+            margin: 60px 0;
+            border: 0.5px solid rgba(0, 113, 227, 0.2);
+        }
+
+        .impact-section h3 {
+            font-size: clamp(28px, 4vw, 40px);
+            font-weight: 600;
+            letter-spacing: -0.005em;
+            line-height: 1.1;
+            margin-bottom: 32px;
+            text-align: center;
+            color: #f5f5f7;
+        }
+
+        .impact-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .impact-section li {
+            font-size: clamp(17px, 2vw, 19px);
+            line-height: 1.52947;
+            letter-spacing: -0.022em;
+            margin-bottom: 20px;
+            padding-left: 32px;
+            position: relative;
+            color: #a1a1a6;
+        }
+
+        .impact-section li::before {
+            content: '💚';
+            position: absolute;
+            left: 0;
+            font-size: 20px;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: clamp(28px, 4vw, 40px);
+            font-weight: 600;
+            letter-spacing: -0.005em;
+            line-height: 1.1;
+            margin: 80px 0 40px;
+            color: #f5f5f7;
+        }
+
+        .crypto-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin: 40px 0;
+        }
+
+        .crypto-card {
+            background: rgba(255, 255, 255, 0.04);
+            padding: 40px 32px;
+            border-radius: 18px;
+            border: 0.5px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.3s;
+        }
+
+        .crypto-card:hover {
+            background: rgba(255, 255, 255, 0.06);
+            transform: translateY(-4px);
+        }
+
+        .crypto-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .crypto-icon {
+            font-size: 48px;
+            line-height: 1;
+        }
+
+        .crypto-name h3 {
+            font-size: clamp(24px, 3vw, 28px);
+            font-weight: 600;
+            letter-spacing: -0.005em;
+            line-height: 1.14286;
+            margin-bottom: 4px;
+            color: #f5f5f7;
+        }
+
+        .crypto-name p {
+            font-size: 14px;
+            color: #86868b;
+        }
+
+        .address-container {
+            background: rgba(0, 0, 0, 0.4);
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+            border: 0.5px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .address-label {
+            font-size: 12px;
+            font-weight: 600;
+            color: #86868b;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .address-text {
+            font-family: 'SF Mono', 'Monaco', 'Courier New', monospace;
+            font-size: clamp(11px, 1.5vw, 13px);
+            word-break: break-all;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 16px;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            line-height: 1.6;
+            color: #f5f5f7;
+        }
+
+        .copy-btn {
+            width: 100%;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 0.5px solid rgba(255, 255, 255, 0.1);
+            color: #f5f5f7;
+            border-radius: 980px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: 400;
+            letter-spacing: -0.022em;
+            transition: all 0.3s;
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
+        }
+
+        .copy-btn:hover {
+            background: rgba(255, 255, 255, 0.12);
+            border-color: rgba(255, 255, 255, 0.18);
+        }
+
+        .copy-btn:active {
+            transform: scale(0.98);
+        }
+
+        .copy-btn.copied {
+            background: rgba(52, 199, 89, 0.2);
+            border-color: #34c759;
+            color: #34c759;
+        }
+
+        .appreciation {
+            background: rgba(255, 255, 255, 0.04);
+            padding: 48px;
+            margin: 60px 0;
+            border-radius: 18px;
+            text-align: center;
+            border: 0.5px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .appreciation h2 {
+            font-size: clamp(32px, 4vw, 48px);
+            font-weight: 600;
+            letter-spacing: -0.005em;
+            line-height: 1.08349;
+            margin-bottom: 24px;
+            color: #f5f5f7;
+        }
+
+        .appreciation p {
+            font-size: clamp(17px, 2vw, 19px);
+            line-height: 1.52947;
+            letter-spacing: -0.022em;
+            margin-bottom: 20px;
+            color: #a1a1a6;
+        }
+
+        .appreciation strong {
+            color: #0071e3;
+            font-weight: 600;
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: center;
+            margin-top: 60px;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .nav-button {
+            padding: 12px 24px;
+            background: rgba(255, 255, 255, 0.08);
+            color: #f5f5f7;
+            text-decoration: none;
+            border-radius: 980px;
+            font-size: 17px;
+            font-weight: 400;
+            letter-spacing: -0.022em;
+            transition: all 0.3s;
+            text-align: center;
+            border: 0.5px solid rgba(255, 255, 255, 0.1);
+            min-width: 160px;
+        }
+
+        .nav-button:hover {
+            background: rgba(255, 255, 255, 0.12);
+            border-color: rgba(255, 255, 255, 0.18);
+        }
+
+        @media (max-width: 734px) {
+            nav ul {
+                gap: 24px;
+                overflow-x: auto;
+                justify-content: flex-start;
+                scrollbar-width: none;
+                -ms-overflow-style: none;
+            }
+
+            nav ul::-webkit-scrollbar {
+                display: none;
+            }
+
+            nav a {
+                font-size: 11px;
+                white-space: nowrap;
+            }
+
+            .container {
+                padding: 88px 16px 60px;
+            }
+
+            .crypto-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .crypto-card {
+                padding: 32px 24px;
+            }
+
+            .appreciation, .impact-section {
+                padding: 32px 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="mystory.html">My Story</a></li>
+            <li><a href="broken-society.html">Broken Society</a></li>
+            <li><a href="lost-generation.html">Lost Generation</a></li>
+            <li><a href="questions.html">Questions</a></li>
+            <li><a href="where-is-god.html">Where is God?</a></li>
+            <li><a href="inequality.html">Inequality</a></li>
+            <li><a href="hope.html">Hope?</a></li>
+            <li><a href="the-truth.html">The Truth</a></li>
+            <li><a href="speak-out.html">Speak Out</a></li>
+            <li><a href="support.html">Support</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h1>Support This Voice 💚</h1>
+
+        <div class="intro">
+            <p>
+                Creating this platform and continuing to speak out takes time, energy, and resources. 
+                If this message resonated with you and you have the means, your support helps keep 
+                this voice alive and reaching others who need to hear it.
+            </p>
+            <p>
+                Every contribution, no matter the size, helps sustain this mission and proves that 
+                our stories matter.
+            </p>
+        </div>
+
+        <div class="impact-section">
+            <h3>How Your Support Helps</h3>
+            <ul>
+                <li>Keeps this website online and accessible to everyone</li>
+                <li>Allows me to continue creating content that breaks the silence</li>
+                <li>Supports my basic needs so I can focus on advocacy</li>
+                <li>Enables me to connect with and support others in similar struggles</li>
+                <li>Funds mental health resources and crisis support outreach</li>
+                <li>Helps amplify voices that the world tries to silence</li>
+            </ul>
+        </div>
+
+        <h2>Donation Options</h2>
+
+        <div class="crypto-grid">
+            <div class="crypto-card">
+                <div class="crypto-header">
+                    <div class="crypto-icon">₿</div>
+                    <div class="crypto-name">
+                        <h3>Bitcoin</h3>
+                        <p>BTC</p>
+                    </div>
+                </div>
+                <div class="address-container">
+                    <div class="address-label">BTC Address</div>
+                    <div class="address-text" id="btc-address">bc1q34e57z3qhcvrmswe0jcyzgvjahdzzwt3gz3f3m</div>
+                    <button class="copy-btn" onclick="copyAddress('btc-address', this)">
+                        Copy Address
+                    </button>
+                </div>
+            </div>
+
+            <div class="crypto-card">
+                <div class="crypto-header">
+                    <div class="crypto-icon">Ξ</div>
+                    <div class="crypto-name">
+                        <h3>Ethereum</h3>
+                        <p>ETH</p>
+                    </div>
+                </div>
+                <div class="address-container">
+                    <div class="address-label">ETH Address</div>
+                    <div class="address-text" id="eth-address">0xe79506Cd1D8938Fd89bd320a5E22C059AC7Ca51D</div>
+                    <button class="copy-btn" onclick="copyAddress('eth-address', this)">
+                        Copy Address
+                    </button>
+                </div>
+            </div>
+
+            <div class="crypto-card">
+                <div class="crypto-header">
+                    <div class="crypto-icon">◆</div>
+                    <div class="crypto-name">
+                        <h3>Binance Coin</h3>
+                        <p>BNB (BSC)</p>
+                    </div>
+                </div>
+                <div class="address-container">
+                    <div class="address-label">BNB Address (BSC Network)</div>
+                    <div class="address-text" id="bnb-address">0xe79506Cd1D8938Fd89bd320a5E22C059AC7Ca51D</div>
+                    <button class="copy-btn" onclick="copyAddress('bnb-address', this)">
+                        Copy Address
+                    </button>
+                </div>
+            </div>
+
+            <div class="crypto-card">
+                <div class="crypto-header">
+                    <div class="crypto-icon">◎</div>
+                    <div class="crypto-name">
+                        <h3>Solana</h3>
+                        <p>SOL</p>
+                    </div>
+                </div>
+                <div class="address-container">
+                    <div class="address-label">SOL Address</div>
+                    <div class="address-text" id="sol-address">7D8PvYFbbe1az1AFQVcBH1HjjztQmbWcxXYFzTzHaZYe</div>
+                    <button class="copy-btn" onclick="copyAddress('sol-address', this)">
+                        Copy Address
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="appreciation">
+            <h2>Thank You</h2>
+            <p>
+                Whether you donate or simply share this message, you're part of something bigger. 
+                You're helping ensure that voices like mine—and maybe yours—don't get drowned out 
+                by silence.
+            </p>
+            <p>
+                Every person who reads these words, every person who feels less alone because of 
+                them, every person who finds the courage to speak their own truth—that's the real 
+                impact of your support.
+            </p>
+            <p>
+                <strong>Together, we break the silence. Together, we demand better. Together, we survive.</strong>
+            </p>
+        </div>
+
+        <div class="impact-section">
+            <h3>Can't Donate? Here's How You Can Still Help</h3>
+            <ul>
+                <li>Share this website with someone who needs to hear it</li>
+                <li>Leave a supportive comment or message</li>
+                <li>Share your own story and add your voice to ours</li>
+                <li>Support mental health initiatives in your community</li>
+                <li>Check in on someone who might be struggling</li>
+                <li>Speak out against injustice when you see it</li>
+            </ul>
+        </div>
+
+        <div class="nav-buttons">
+            <a href="speak-out.html" class="nav-button">← Back to Speak Out</a>
+            <a href="index.html" class="nav-button">Return to Home</a>
+        </div>
+    </div>
+
+    <script>
+        function copyAddress(elementId, button) {
+            const addressElement = document.getElementById(elementId);
+            const address = addressElement.textContent.trim();
+            
+            navigator.clipboard.writeText(address).then(() => {
+                button.textContent = '✓ Copied!';
+                button.classList.add('copied');
+                
+                setTimeout(() => {
+                    button.textContent = 'Copy Address';
+                    button.classList.remove('copied');
+                }, 2000);
+            }).catch(err => {
+                alert('Failed to copy address. Please copy manually.');
+                console.error('Copy failed:', err);
+            });
+        }
+    </script>
+</body>
+</html>
