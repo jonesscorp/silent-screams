@@ -1,1 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Is death now the solution?.">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <title>My Story - Silent Screams</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: #000;
+            color: #f5f5f7;
+            overflow-x: hidden;
+            line-height: 1.47059;
+            font-size: 17px;
+            font-weight: 400;
+            letter-spacing: -0.022em;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: saturate(180%) blur(20px);
+            z-index: 1000;
+            border-bottom: 0.5px solid rgba(255, 255, 255, 0.1);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            max-width: 1024px;
+            margin: 0 auto;
+            padding: 0 22px;
+            height: 48px;
+            gap: 32px;
+        }
+
+        nav a {
+            color: #f5f5f7;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 400;
+            letter-spacing: -0.01em;
+            transition: opacity 0.3s;
+            opacity: 0.8;
+        }
+
+        nav a:hover {
+            opacity: 1;
+        }
+
+        .container {
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 108px 22px 80px;
+        }
+
+        h1 {
+            font-size: clamp(40px, 6vw, 64px);
+            font-weight: 600;
+            letter-spacing: -0.015em;
+            line-height: 1.0625;
+            margin-bottom: 60px;
+            text-align: center;
+            background: linear-gradient(180deg, #f5f5f7 0%, #86868b 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .story-section {
+            background: rgba(255, 255, 255, 0.04);
+            padding: 48px;
+            margin: 32px 0;
+            border-radius: 18px;
+            border: 0.5px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.3s;
+        }
+
+        .story-section:hover {
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(255, 255, 255, 0.12);
+        }
+
+        .story-section h2 {
+            font-size: clamp(24px, 4vw, 32px);
+            font-weight: 600;
+            letter-spacing: -0.005em;
+            line-height: 1.125;
+            margin-bottom: 24px;
+            color: #f5f5f7;
+        }
+
+        .story-section p {
+            font-size: clamp(17px, 2vw, 19px);
+            line-height: 1.52947;
+            letter-spacing: -0.022em;
+            margin-bottom: 20px;
+            color: #a1a1a6;
+            font-weight: 400;
+        }
+
+        .quote {
+            font-style: normal;
+            font-size: clamp(21px, 3vw, 24px);
+            font-weight: 600;
+            letter-spacing: -0.005em;
+            line-height: 1.33341;
+            text-align: center;
+            padding: 48px 32px;
+            margin: 60px 0;
+            border-left: 3px solid #0071e3;
+            background: rgba(0, 113, 227, 0.08);
+            border-radius: 18px;
+            color: #f5f5f7;
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 60px;
+            gap: 16px;
+        }
+
+        .nav-button {
+            padding: 12px 24px;
+            background: rgba(255, 255, 255, 0.08);
+            color: #f5f5f7;
+            text-decoration: none;
+            border-radius: 980px;
+            font-size: 17px;
+            font-weight: 400;
+            letter-spacing: -0.022em;
+            transition: all 0.3s;
+            flex: 1;
+            text-align: center;
+            border: 0.5px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-button:hover {
+            background: rgba(255, 255, 255, 0.12);
+            border-color: rgba(255, 255, 255, 0.18);
+        }
+
+        .nav-button.next {
+            background: #0071e3;
+            border-color: #0071e3;
+        }
+
+        .nav-button.next:hover {
+            background: #0077ed;
+        }
+
+        @media (max-width: 734px) {
+            nav ul {
+                gap: 24px;
+                overflow-x: auto;
+                justify-content: flex-start;
+                scrollbar-width: none;
+                -ms-overflow-style: none;
+            }
+
+            nav ul::-webkit-scrollbar {
+                display: none;
+            }
+
+            nav a {
+                font-size: 11px;
+                white-space: nowrap;
+            }
+
+            .container {
+                padding: 88px 16px 60px;
+            }
+
+            .story-section {
+                padding: 32px 24px;
+            }
+
+            .nav-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="mystory.html">My Story</a></li>
+            <li><a href="broken-society.html">Broken Society</a></li>
+            <li><a href="lost-generation.html">Lost Generation</a></li>
+            <li><a href="questions.html">Questions</a></li>
+            <li><a href="where-is-god.html">Where is God?</a></li>
+            <li><a href="inequality.html">Inequality</a></li>
+            <li><a href="hope.html">Hope?</a></li>
+            <li><a href="the-truth.html">The Truth</a></li>
+            <li><a href="speak-out.html">Speak Out</a></li>
+            <li><a href="support.html">Support</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h1>My Story</h1>
+
+        <div class="story-section">
+            <h2>The Beginning</h2>
+            <p>
+                I was born into a world that promised nothing and delivered less. From the moment I 
+                could understand words, I heard about dreams, about hard work paying off, about a 
+                bright future. But those were just stories told to keep us quiet.
+            </p>
+            <p>
+                My childhood was marked by absences. Absent parents working multiple jobs. Absent 
+                meals when money ran out. Absent hope when I looked around and saw the same struggle 
+                in every face on my street.
+            </p>
+        </div>
+
+        <div class="story-section">
+            <h2>The Weight of Depression</h2>
+            <p>
+                Depression isn't sadness. It's a void. It's waking up and feeling nothing. It's 
+                watching the world move around you while you're trapped in quicksand. I smile when 
+                I'm supposed to, I laugh when expected, but inside there's just... emptiness.
+            </p>
+            <p>
+                Nobody talks about how lonely it is. How you can be surrounded by people and still 
+                feel like you're screaming into a void. How you can reach out and watch your hand 
+                pass through others like you're a ghost in your own life.
+            </p>
+        </div>
+
+        <div class="quote">
+            "I am not living. I am merely existing, watching days turn into years, 
+            waiting for something to change, knowing nothing will."
+        </div>
+
+        <div class="story-section">
+            <h2>Invisible Pain</h2>
+            <p>
+                The hardest part? Nobody sees it. They see a young person, and they assume resilience. 
+                They assume we bounce back. But we don't. We carry scars they can't see, trauma they 
+                didn't witness, pain they refuse to acknowledge.
+            </p>
+            <p>
+                I've learned to wear a mask. To be functional. To pretend everything is fine while 
+                inside I'm drowning. Because when you show the pain, people either look away or tell 
+                you it could be worse. As if knowing others suffer too makes my pain any less real.
+            </p>
+        </div>
+
+        <div class="nav-buttons">
+            <a href="index.html" class="nav-button">← Previous</a>
+            <a href="broken-society.html" class="nav-button next">Broken Society →</a>
+        </div>
+    </div>
+</body>
+</html>
