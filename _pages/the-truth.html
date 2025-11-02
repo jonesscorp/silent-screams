@@ -1,1 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Is death now the solution?.">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <title>The Truth - Silent Screams</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: #000;
+            color: #f5f5f7;
+            overflow-x: hidden;
+            line-height: 1.47059;
+            font-size: 17px;
+            font-weight: 400;
+            letter-spacing: -0.022em;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: saturate(180%) blur(20px);
+            z-index: 1000;
+            border-bottom: 0.5px solid rgba(255, 255, 255, 0.1);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            max-width: 1024px;
+            margin: 0 auto;
+            padding: 0 22px;
+            height: 48px;
+            gap: 32px;
+        }
+
+        nav a {
+            color: #f5f5f7;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 400;
+            letter-spacing: -0.01em;
+            transition: opacity 0.3s;
+            opacity: 0.8;
+        }
+
+        nav a:hover {
+            opacity: 1;
+        }
+
+        .container {
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 108px 22px 80px;
+        }
+
+        h1 {
+            font-size: clamp(40px, 6vw, 64px);
+            font-weight: 600;
+            letter-spacing: -0.015em;
+            line-height: 1.0625;
+            margin-bottom: 60px;
+            text-align: center;
+            background: linear-gradient(180deg, #f5f5f7 0%, #86868b 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .truth-block {
+            background: rgba(255, 255, 255, 0.04);
+            padding: 48px;
+            margin: 32px 0;
+            border-radius: 18px;
+            border-left: 3px solid #0071e3;
+            border: 0.5px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.3s;
+        }
+
+        .truth-block:hover {
+            background: rgba(255, 255, 255, 0.06);
+        }
+
+        .truth-block h2 {
+            font-size: clamp(24px, 4vw, 32px);
+            font-weight: 600;
+            letter-spacing: -0.005em;
+            line-height: 1.125;
+            margin-bottom: 24px;
+            color: #f5f5f7;
+        }
+
+        .truth-block p {
+            font-size: clamp(17px, 2vw, 19px);
+            line-height: 1.52947;
+            letter-spacing: -0.022em;
+            margin-bottom: 20px;
+            color: #a1a1a6;
+            font-weight: 400;
+        }
+
+        .truth-block strong {
+            color: #0071e3;
+            font-weight: 600;
+        }
+
+        .revelation {
+            text-align: center;
+            font-size: clamp(28px, 4vw, 40px);
+            font-weight: 600;
+            letter-spacing: -0.005em;
+            line-height: 1.1;
+            margin: 80px 0;
+            padding: 60px 32px;
+            background: linear-gradient(135deg, rgba(0, 113, 227, 0.08), rgba(0, 113, 227, 0.12));
+            border-radius: 18px;
+            border: 0.5px solid rgba(0, 113, 227, 0.2);
+            color: #f5f5f7;
+        }
+
+        .acceptance {
+            background: linear-gradient(135deg, rgba(52, 199, 89, 0.08), rgba(0, 113, 227, 0.08));
+            padding: 48px;
+            border-radius: 18px;
+            margin: 60px 0;
+            border-left: 3px solid #34c759;
+            border: 0.5px solid rgba(52, 199, 89, 0.2);
+        }
+
+        .acceptance h3 {
+            font-size: clamp(24px, 4vw, 32px);
+            font-weight: 600;
+            letter-spacing: -0.005em;
+            line-height: 1.125;
+            margin-bottom: 24px;
+            color: #34c759;
+        }
+
+        .acceptance p {
+            font-size: clamp(17px, 2vw, 19px);
+            line-height: 1.52947;
+            letter-spacing: -0.022em;
+            margin-bottom: 20px;
+            color: #a1a1a6;
+        }
+
+        .list-truths {
+            background: rgba(255, 255, 255, 0.04);
+            padding: 48px;
+            margin: 60px 0;
+            border-radius: 18px;
+            border: 0.5px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .list-truths h3 {
+            font-size: clamp(24px, 4vw, 32px);
+            font-weight: 600;
+            letter-spacing: -0.005em;
+            line-height: 1.125;
+            text-align: center;
+            margin-bottom: 40px;
+            color: #f5f5f7;
+        }
+
+        .list-truths ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .list-truths li {
+            font-size: clamp(17px, 2vw, 19px);
+            line-height: 1.52947;
+            letter-spacing: -0.022em;
+            margin-bottom: 24px;
+            padding-left: 32px;
+            position: relative;
+            color: #a1a1a6;
+        }
+
+        .list-truths li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: #0071e3;
+            font-weight: 600;
+            font-size: 20px;
+        }
+
+        .list-truths strong {
+            color: #f5f5f7;
+            font-weight: 600;
+        }
+
+        .final-message {
+            background: rgba(0, 113, 227, 0.08);
+            padding: 60px 48px;
+            margin: 60px 0;
+            border-radius: 18px;
+            border: 0.5px solid rgba(0, 113, 227, 0.2);
+            text-align: center;
+        }
+
+        .final-message h3 {
+            font-size: clamp(32px, 4vw, 48px);
+            font-weight: 600;
+            letter-spacing: -0.005em;
+            line-height: 1.08349;
+            margin-bottom: 24px;
+            color: #f5f5f7;
+        }
+
+        .final-message p {
+            font-size: clamp(19px, 2.5vw, 21px);
+            line-height: 1.381;
+            letter-spacing: -0.022em;
+            margin-bottom: 20px;
+            color: #a1a1a6;
+        }
+
+        .final-message strong {
+            color: #0071e3;
+            font-weight: 600;
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 60px;
+            gap: 16px;
+        }
+
+        .nav-button {
+            padding: 12px 24px;
+            background: rgba(255, 255, 255, 0.08);
+            color: #f5f5f7;
+            text-decoration: none;
+            border-radius: 980px;
+            font-size: 17px;
+            font-weight: 400;
+            letter-spacing: -0.022em;
+            transition: all 0.3s;
+            flex: 1;
+            text-align: center;
+            border: 0.5px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-button:hover {
+            background: rgba(255, 255, 255, 0.12);
+            border-color: rgba(255, 255, 255, 0.18);
+        }
+
+        .nav-button.next {
+            background: #0071e3;
+            border-color: #0071e3;
+        }
+
+        .nav-button.next:hover {
+            background: #0077ed;
+        }
+
+        @media (max-width: 734px) {
+            nav ul {
+                gap: 24px;
+                overflow-x: auto;
+                justify-content: flex-start;
+                scrollbar-width: none;
+                -ms-overflow-style: none;
+            }
+
+            nav ul::-webkit-scrollbar {
+                display: none;
+            }
+
+            nav a {
+                font-size: 11px;
+                white-space: nowrap;
+            }
+
+            .container {
+                padding: 88px 16px 60px;
+            }
+
+            .truth-block, .acceptance, .list-truths, .final-message {
+                padding: 32px 24px;
+            }
+
+            .revelation {
+                padding: 40px 24px;
+            }
+
+            .nav-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="mystory.html">My Story</a></li>
+            <li><a href="broken-society.html">Broken Society</a></li>
+            <li><a href="lost-generation.html">Lost Generation</a></li>
+            <li><a href="questions.html">Questions</a></li>
+            <li><a href="where-is-god.html">Where is God?</a></li>
+            <li><a href="inequality.html">Inequality</a></li>
+            <li><a href="hope.html">Hope?</a></li>
+            <li><a href="the-truth.html">The Truth</a></li>
+            <li><a href="speak-out.html">Speak Out</a></li>
+            <li><a href="support.html">Support</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h1>The Truth</h1>
+
+        <div class="truth-block">
+            <h2>What I've Learned</h2>
+            <p>
+                After all the pain, all the questions, all the searching—I've come to understand 
+                something fundamental: <strong>The world is broken, but I don't have to be.</strong>
+            </p>
+            <p>
+                The systems are unfair. Society is indifferent. Inequality is real. Depression is 
+                crushing. These are facts, not feelings. But here's another truth: <strong>I'm still 
+                here. I'm still fighting. And that matters.</strong>
+            </p>
+        </div>
+
+        <div class="revelation">
+            My pain is real. My anger is justified. But my existence is also an act of resistance.
+        </div>
+
+        <div class="truth-block">
+            <h2>They Want Us Silent</h2>
+            <p>
+                The powerful want us to suffer quietly. They want our generation to accept poverty, 
+                to normalize depression, to internalize failure as our fault. They want us to be 
+                too broken to organize, too defeated to demand change, too ashamed to speak out.
+            </p>
+            <p>
+                But every time I tell my story, I break their silence. Every time someone hears me 
+                and says "me too," we weaken their control. <strong>Our voices are weapons they 
+                can't confiscate.</strong>
+            </p>
+        </div>
+
+        <div class="list-truths">
+            <h3>The Truths They Don't Want You to Know</h3>
+            <ul>
+                <li><strong>You're not broken—the system is.</strong> Your struggle isn't a personal 
+                failure; it's a systemic one.</li>
+                
+                <li><strong>You're not alone.</strong> Millions feel exactly what you feel. The 
+                isolation is manufactured to keep us divided.</li>
+                
+                <li><strong>Your pain is valid.</strong> You don't need to justify your suffering to 
+                anyone. You don't need to prove you've "earned" the right to hurt.</li>
+                
+                <li><strong>Asking for help isn't weakness.</strong> It's survival. It's strategy. 
+                It's how we build the networks they tried to destroy.</li>
+                
+                <li><strong>Change is possible.</strong> Not easy, not guaranteed, but possible. 
+                Every major social shift started with people who refused to accept things as they were.</li>
+                
+                <li><strong>Your voice matters.</strong> Even if you think no one is listening, someone 
+                is. Someone needs to hear that they're not alone.</li>
+                
+                <li><strong>Survival is victory.</strong> In a world designed to break us, every day 
+                we continue is an act of defiance.</li>
+            </ul>
+        </div>
+
+        <div class="acceptance">
+            <h3>What I'm Choosing to Believe</h3>
+            <p>
+                I choose to believe that my life has meaning, even if I haven't found it yet. I choose 
+                to believe that my pain can become purpose, that my struggle can inspire change, that 
+                my voice can reach someone who needs it.
+            </p>
+            <p>
+                I choose to believe that the friends I lost to addiction, to suicide, to despair—they 
+                mattered. Their lives had value. Their deaths should mean something. And the best way 
+                to honor them is to keep fighting for a world where fewer people have to make the 
+                choices they made.
+            </p>
+            <p>
+                I choose to believe that even if I can't fix the whole system, I can be part of 
+                changing it. Even if I can't save everyone, I can try to save someone. Even if I can't 
+                end all suffering, I can reduce some of it.
+            </p>
+        </div>
+
+        <div class="truth-block">
+            <h2>To the Others Like Me</h2>
+            <p>
+                If you're reading this and you see yourself in these words—know this: <strong>You are 
+                not invisible.</strong> Your pain is not insignificant. Your life is not worthless.
+            </p>
+            <p>
+                The world may not value you the way it should, but that's a failure of the world, not 
+                of you. You have survived 100% of your worst days so far. That's not luck—that's 
+                strength.
+            </p>
+            <p>
+                We are the generation they tried to break. But we're also the generation that refuses 
+                to stay broken. We're learning to find each other, to support each other, to fight 
+                for each other. And together, we're stronger than they want us to believe.
+            </p>
+        </div>
+
+        <div class="final-message">
+            <h3>The Truth About This Life</h3>
+            <p>
+                We didn't choose to be born into this struggle. We didn't choose the pain, the 
+                inequality, the broken systems. But we can choose what we do with it.
+            </p>
+            <p>
+                We can choose to speak out instead of suffering in silence. We can choose to connect 
+                instead of isolating. We can choose to fight instead of surrendering. We can choose 
+                to create meaning in a world that tried to rob us of it.
+            </p>
+            <p>
+                <strong>This is our truth: We are here. We matter. And we will not be silenced.</strong>
+            </p>
+        </div>
+
+        <div class="nav-buttons">
+            <a href="hope.html" class="nav-button">← Previous</a>
+            <a href="speak-out.html" class="nav-button next">Speak Out →</a>
+        </div>
+    </div>
+</body>
+</html>
