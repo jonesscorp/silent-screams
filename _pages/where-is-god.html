@@ -1,1 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Is death now the solution?.">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <title>Where is God? - Silent Screams</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: #000;
+            color: #f5f5f7;
+            overflow-x: hidden;
+            line-height: 1.47059;
+            font-size: 17px;
+            font-weight: 400;
+            letter-spacing: -0.022em;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: saturate(180%) blur(20px);
+            z-index: 1000;
+            border-bottom: 0.5px solid rgba(255, 255, 255, 0.1);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            max-width: 1024px;
+            margin: 0 auto;
+            padding: 0 22px;
+            height: 48px;
+            gap: 32px;
+        }
+
+        nav a {
+            color: #f5f5f7;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 400;
+            letter-spacing: -0.01em;
+            transition: opacity 0.3s;
+            opacity: 0.8;
+        }
+
+        nav a:hover {
+            opacity: 1;
+        }
+
+        .container {
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 108px 22px 80px;
+        }
+
+        h1 {
+            font-size: clamp(40px, 6vw, 64px);
+            font-weight: 600;
+            letter-spacing: -0.015em;
+            line-height: 1.0625;
+            margin-bottom: 60px;
+            text-align: center;
+            background: linear-gradient(180deg, #f5f5f7 0%, #86868b 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .spiritual-question {
+            background: rgba(255, 255, 255, 0.04);
+            padding: 48px;
+            margin: 32px 0;
+            border-radius: 18px;
+            border: 0.5px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.3s;
+        }
+
+        .spiritual-question:hover {
+            background: rgba(255, 255, 255, 0.06);
+        }
+
+        .spiritual-question h2 {
+            font-size: clamp(24px, 4vw, 32px);
+            font-weight: 600;
+            letter-spacing: -0.005em;
+            line-height: 1.125;
+            margin-bottom: 24px;
+            color: #f5f5f7;
+        }
+
+        .spiritual-question p {
+            font-size: clamp(17px, 2vw, 19px);
+            line-height: 1.52947;
+            letter-spacing: -0.022em;
+            margin-bottom: 20px;
+            color: #a1a1a6;
+            font-weight: 400;
+        }
+
+        .big-question {
+            text-align: center;
+            font-size: clamp(36px, 5vw, 56px);
+            font-weight: 600;
+            letter-spacing: -0.005em;
+            line-height: 1.07143;
+            margin: 80px 0;
+            padding: 60px 32px;
+            background: rgba(0, 113, 227, 0.08);
+            border-radius: 18px;
+            border: 0.5px solid rgba(0, 113, 227, 0.2);
+            color: #f5f5f7;
+        }
+
+        .contemplation {
+            background: rgba(0, 113, 227, 0.08);
+            padding: 48px;
+            border-radius: 18px;
+            margin: 60px 0;
+            border-left: 3px solid #0071e3;
+            font-style: italic;
+            border: 0.5px solid rgba(0, 113, 227, 0.2);
+        }
+
+        .contemplation p {
+            font-size: clamp(17px, 2vw, 19px);
+            line-height: 1.52947;
+            letter-spacing: -0.022em;
+            margin-bottom: 20px;
+            color: #a1a1a6;
+        }
+
+        .void {
+            text-align: center;
+            padding: 80px 32px;
+            margin: 60px 0;
+        }
+
+        .void h3 {
+            font-size: clamp(28px, 4vw, 40px);
+            font-weight: 600;
+            letter-spacing: -0.005em;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            color: #f5f5f7;
+        }
+
+        .void p {
+            font-size: clamp(19px, 2.5vw, 21px);
+            line-height: 1.381;
+            letter-spacing: -0.022em;
+            color: #a1a1a6;
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 60px;
+            gap: 16px;
+        }
+
+        .nav-button {
+            padding: 12px 24px;
+            background: rgba(255, 255, 255, 0.08);
+            color: #f5f5f7;
+            text-decoration: none;
+            border-radius: 980px;
+            font-size: 17px;
+            font-weight: 400;
+            letter-spacing: -0.022em;
+            transition: all 0.3s;
+            flex: 1;
+            text-align: center;
+            border: 0.5px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-button:hover {
+            background: rgba(255, 255, 255, 0.12);
+            border-color: rgba(255, 255, 255, 0.18);
+        }
+
+        .nav-button.next {
+            background: #0071e3;
+            border-color: #0071e3;
+        }
+
+        .nav-button.next:hover {
+            background: #0077ed;
+        }
+
+        @media (max-width: 734px) {
+            nav ul {
+                gap: 24px;
+                overflow-x: auto;
+                justify-content: flex-start;
+                scrollbar-width: none;
+                -ms-overflow-style: none;
+            }
+
+            nav ul::-webkit-scrollbar {
+                display: none;
+            }
+
+            nav a {
+                font-size: 11px;
+                white-space: nowrap;
+            }
+
+            .container {
+                padding: 88px 16px 60px;
+            }
+
+            .spiritual-question, .contemplation {
+                padding: 32px 24px;
+            }
+
+            .big-question, .void {
+                padding: 40px 24px;
+            }
+
+            .nav-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="mystory.html">My Story</a></li>
+            <li><a href="broken-society.html">Broken Society</a></li>
+            <li><a href="lost-generation.html">Lost Generation</a></li>
+            <li><a href="questions.html">Questions</a></li>
+            <li><a href="where-is-god.html">Where is God?</a></li>
+            <li><a href="inequality.html">Inequality</a></li>
+            <li><a href="hope.html">Hope?</a></li>
+            <li><a href="the-truth.html">The Truth</a></li>
+            <li><a href="speak-out.html">Speak Out</a></li>
+            <li><a href="support.html">Support</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h1>Where Is God?</h1>
+
+        <div class="spiritual-question">
+            <h2>The Silence of Heaven</h2>
+            <p>
+                They say God is love. They say God is just. They say God has a plan. But if God is 
+                love, why is there so much hate? If God is just, why is there so much injustice? 
+                If God has a plan, why does it look like chaos?
+            </p>
+            <p>
+                I've prayed. I've begged. I've pleaded for answers, for relief, for just a sign 
+                that someone is listening. But there's only silence. A deafening, suffocating silence 
+                that makes me wonder if anyone is really there.
+            </p>
+        </div>
+
+        <div class="big-question">
+            If God exists, does He even care?
+        </div>
+
+        <div class="spiritual-question">
+            <h2>The Contradiction</h2>
+            <p>
+                They tell me God knows my pain. But if He knows and does nothing, isn't that worse 
+                than not knowing? They tell me suffering builds character. But what kind of loving 
+                parent watches their child suffer to teach them a lesson?
+            </p>
+            <p>
+                They tell me to have faith, but faith in what? In a being who created a world where 
+                children starve? Where the innocent suffer? Where good people die young and bad 
+                people die old and wealthy?
+            </p>
+        </div>
+
+        <div class="contemplation">
+            <p>
+                Maybe God doesn't exist. Maybe we created God because the alternative—that we're 
+                truly alone in this universe—is too terrifying to accept. Maybe religion is just 
+                humanity's way of coping with the randomness and cruelty of existence.
+            </p>
+            <p>
+                Or maybe God exists but doesn't intervene. Maybe we're an experiment He lost 
+                interest in. Maybe we're a simulation running without oversight. Maybe prayers 
+                go nowhere because there's no one listening.
+            </p>
+        </div>
+
+        <div class="spiritual-question">
+            <h2>The Crisis of Faith</h2>
+            <p>
+                I want to believe. I want to have faith that there's meaning, that there's purpose, 
+                that someone cares about the pain we're in. But every day I see evidence to the 
+                contrary.
+            </p>
+            <p>
+                I see children dying of diseases. I see good people destroyed by circumstances beyond 
+                their control. I see cruelty rewarded and kindness punished. And I wonder: if there 
+                is a God, what kind of God allows this?
+            </p>
+        </div>
+
+        <div class="void">
+            <h3>Screaming Into the Void</h3>
+            <p>
+                Maybe that's all prayer is—screaming into the void, hoping something echoes back. 
+                And when nothing does, we tell ourselves it's part of a plan we can't understand. 
+                We make excuses for silence. We rationalize abandonment. We call indifference 
+                "mysterious ways."
+            </p>
+        </div>
+
+        <div class="spiritual-question">
+            <h2>The Real Questions</h2>
+            <p>
+                If God is all-powerful, He could end suffering. If He's all-knowing, He knows we're 
+                suffering. If He's all-loving, He would want to end our suffering. Yet suffering 
+                continues. So either God isn't all-powerful, or isn't all-knowing, or isn't 
+                all-loving—or God doesn't exist.
+            </p>
+            <p>
+                They say we can't understand God's ways. But if we can't understand Him, how can 
+                we trust Him? If His ways are beyond our comprehension, how do we know they're good?
+            </p>
+        </div>
+
+        <div class="contemplation">
+            <p>
+                I'm not angry at God. I'm confused. I'm hurt. I'm searching for answers in a world 
+                that seems designed to provide none. And the silence—the eternal, crushing silence—
+                feels like the only truth I can count on.
+            </p>
+        </div>
+
+        <div class="nav-buttons">
+            <a href="questions.html" class="nav-button">← Previous</a>
+            <a href="inequality.html" class="nav-button next">Inequality →</a>
+        </div>
+    </div>
+</body>
+</html>
